@@ -36,7 +36,6 @@ jobs:
         if: success() || failure()
         with:
           name: JavaScript test status
-          path: ./__tests__/reports/jest-*.xml
           max-annotations: '40'
           reporter: jest-junit
           fail-on-error: 'false'

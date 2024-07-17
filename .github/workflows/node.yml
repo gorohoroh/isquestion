@@ -29,8 +29,6 @@ jobs:
           node-version-file: '.nvmrc'
       - name: Install dependencies
         run: npm ci
-      - name: Build with test data
-        run: npm run build
       - name: Run tests
         run: npm run test
       - name: Report test results
@@ -38,7 +36,7 @@ jobs:
         if: success() || failure()
         with:
           name: JavaScript test status
-          path: developers/site/__tests__/reports/jest-*.xml
+          path: ./__tests__/reports/jest-*.xml
           max-annotations: '40'
           reporter: jest-junit
           fail-on-error: 'false'

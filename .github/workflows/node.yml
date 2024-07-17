@@ -31,15 +31,6 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm run test
-      - name: Report test results
-        uses: dorny/test-reporter@v1
-        if: success() || failure()
-        with:
-          name: JavaScript test status
-          path: 'coverage/clover.xml'
-          max-annotations: '40'
-          reporter: jest-junit
-          fail-on-error: 'false'
       - name: Upload coverage reports to Codecov
         if: success() || failure()
         uses: codecov/codecov-action@v4.0.1

@@ -17,7 +17,13 @@ describe("Input is a question", () => {
         ['First statement. Second statement?'],
         ['What does @ mean?'],
         ['Is # trending?'],
-        ['Is 42 the answer to everything?']
+        ['Is 42 the answer to everything?'],
+        ['What is your name'],
+        ['How does this work'],
+        ['Why are we here'],
+        ['Where is the nearest store'],
+        ['Who are you'],
+        ['When does the event start']
     ])('%s', (input) => {
         expect(isQuestion(input)).toBe(true);
     });
@@ -40,7 +46,9 @@ describe("Input is not a question", () => {
         ['Special character @'],
         ['Hash symbol #'],
         ['The number 42 is significant.'],
-        ['Counting: 1, 2, 3.']
+        ['Counting: 1, 2, 3.'],
+        ['I wonder what time it is'],
+        ['Let me know what you think']
     ])('%s', (input) => {
         expect(isQuestion(input)).toBe(false);
     });

@@ -7,7 +7,7 @@ export const isQuestion = input => {
     return input.endsWith('?') || startsWithQuestionWord;
 }
 
-export const extractStackOverflowLinks = input => {
+export const extractStackOverflowQuestionsAndAnswers = input => {
     if(typeof input !== "string") {
         throw new Error("Can't extract URLs from something that's not a string. Please provide a string instead");
     }

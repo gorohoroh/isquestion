@@ -16,7 +16,7 @@ export const extractStackOverflowQuestionsAndAnswers = input => {
         throw new Error("The provided string is too long, please try something shorter")
     }
 
-    const regex = urlRegex({strict: false});
+    const regex = urlRegex({strict: true});
     const urls = input.match(regex);
 
     if (!urls) {

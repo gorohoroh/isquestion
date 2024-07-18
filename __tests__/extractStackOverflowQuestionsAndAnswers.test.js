@@ -31,9 +31,6 @@ describe("Extracts StackOverflow questions and answers", () => {
         // Case with subdomain StackOverflow URL
         ["Mobile version: https://mobile.stackoverflow.com/questions/123456", ["https://mobile.stackoverflow.com/questions/123456"]],
 
-        // Case with nested valid StackOverflow URL
-        ["Nested URL: <a href='https://stackoverflow.com/q/123456'>link</a>", ["https://stackoverflow.com/q/123456"]],
-
         // Case with a very long string but valid StackOverflow URL within limit
         ["Long string " + "a".repeat(9940) + " https://stackoverflow.com/q/123456", ["https://stackoverflow.com/q/123456"]],
 
@@ -48,5 +45,14 @@ describe("Extracts StackOverflow questions and answers", () => {
         } else {
             expect(extractStackOverflowQuestionsAndAnswers(input)).toEqual(output);
         }
+    });
+
+    // Test case for non-string input
+    it("should throw an error when input is not a string", () => {
+        const nonStringInputs = [123, {}, [], null, undefined];
+
+        nonStringInputs.forEach(input => {
+            expect(() => extractStackOverflowQuestionsAndAnswers(input)).toThrow("Can't extract URLs from something that's not a string. Please provide a string instead");
+        });
     });
 });

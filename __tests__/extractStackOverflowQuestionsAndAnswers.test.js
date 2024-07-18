@@ -35,10 +35,10 @@ describe("Extracts StackOverflow questions and answers", () => {
         ["Nested URL: <a href='https://stackoverflow.com/q/123456'>link</a>", ["https://stackoverflow.com/q/123456"]],
 
         // Case with a very long string but valid StackOverflow URL within limit
-        ["Long string " + "a".repeat(9990) + " https://stackoverflow.com/q/123456", ["https://stackoverflow.com/q/123456"]],
+        ["Long string " + "a".repeat(9940) + " https://stackoverflow.com/q/123456", ["https://stackoverflow.com/q/123456"]],
 
         // Case with exactly 10000 characters and valid StackOverflow URL
-        ["Long string " + "a".repeat(9983) + " https://stackoverflow.com/q/123456", ["https://stackoverflow.com/q/123456"]],
+        ["Long string " + "a".repeat(9953) + " https://stackoverflow.com/q/123456", ["https://stackoverflow.com/q/123456"]],
 
         // Case with a string exceeding 10000 characters
         ["Very long string " + "a".repeat(10001), "Error"],

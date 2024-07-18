@@ -23,7 +23,7 @@ export const extractStackOverflowQuestionsAndAnswers = input => {
         return []
     }
 
-    const stackOverflowLinks = [];
+    const stackOverflowQuestionsAndAnswers = [];
 
     const SO_DOMAIN = "http(s?)://((mobile\\.)?)stackoverflow\\.com/";
     const SO_TYPE = "(questions|q|a)/";
@@ -46,10 +46,10 @@ export const extractStackOverflowQuestionsAndAnswers = input => {
 
     for (const url of urls) {
         if (stackOverflowUrlPattern.test(url)) {
-            stackOverflowLinks.push(url);
+            stackOverflowQuestionsAndAnswers.push(url);
         }
     }
 
-    return stackOverflowLinks;
+    return stackOverflowQuestionsAndAnswers;
 };
 

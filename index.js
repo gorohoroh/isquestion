@@ -9,7 +9,7 @@ export const isQuestion = input => {
 
 export const isExclamation = input => {
     input = input.trim();
-    return input.endsWith('!');
+    return !input.includes('?') && input.endsWith('!');
 }
 
 export const extractStackOverflowQuestionsAndAnswers = input => {

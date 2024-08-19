@@ -1,4 +1,5 @@
 import urlRegex from "url-regex";
+import removeMarkdown from "remove-markdown";
 
 export const isQuestion = input => {
     input = input.trim();
@@ -58,3 +59,13 @@ export const extractStackOverflowQuestionsAndAnswers = input => {
     return stackOverflowQuestionsAndAnswers;
 };
 
+const markdownToPlainTextSummary = (markdown, maxLength) => {
+    markdown = markdown.replace(/\s\s+/g, ' '); // Replacing 2+ spaces, as well as tabs and newlines with a single space. This works around remove-markdown's performance problem with multiple consecutive spaces
+    const plainText = removeMarkdown(markdown)
+        .replace(/`/g, '') // Remove any backticks remaining after a remove-markdown pass
+        .replace(/\n{2,}/g, '\n\n') // Remove redundant linebreaks
+        .replace(/\|/g, ' ') // Remove table cell delimiters
+        .replace(/(-|\s){2,}/g, ' ') // Remove table header separators and redundant spaces
+        .trim()
+    return plainText.length <= maxLength ? plainText : plainText.substring(0, maxLength).concat('...')
+};

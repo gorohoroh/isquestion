@@ -69,3 +69,5 @@ const markdownToPlainTextSummary = (markdown, maxLength) => {
         .trim()
     return plainText.length <= maxLength ? plainText : plainText.substring(0, maxLength).concat('...')
 };
+
+console.log(markdownToPlainTextSummary("## My header", 200))
